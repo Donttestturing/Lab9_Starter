@@ -87,7 +87,17 @@
     </section>
   </main>
 
+
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
   <script>
+    window.TrackJS && TrackJS.install({ 
+      token: "527821e83b1340efa3c060a41814d239"
+      // for more configuration options, see https://docs.trackjs.com
+    });
+    TrackJS.track('Testing TrackJS!');  //verify TrackJS is set up properly, should track and report all errors
+  </script>
+  <script>
+
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
       e.preventDefault();
@@ -166,12 +176,11 @@
 
     errorBtns[14].addEventListener('click', function globalErrButton() { //global error button
         boom();
-
-        if (window.onerror) {
-          console.log('Global error: ' + window.onerror);
-        }
     }); 
 
+    window.addEventListener('error', () => {
+      console.log('Global error occurred, too bad ')
+    });
 
 //try catch portion
     try {
