@@ -100,8 +100,115 @@
 
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
 
+
+    //let errorBtnsMyWay = document.querySelectorAll('#error-btns > button');
+
+
+
     // Start your code here
     // You may move this JS to another file if you wish
+//console testing buttons part    
+    errorBtns[0].addEventListener('click', () =>{     //console log button
+        console.log("Console Log Demo");
+    });
+    errorBtns[1].addEventListener('click', () =>{     //console error button
+      console.error("Console Error Demo");
+    });
+    let consoleCount = 0;
+    errorBtns[2].addEventListener('click', () =>{     //console count button
+      consoleCount++;
+      console.log("Count Button: " + consoleCount);
+    });
+    errorBtns[3].addEventListener('click', () =>{     //console warn button
+      console.warn("Console warn button:","Hey! Don't do that!");
+    });
+    errorBtns[4].addEventListener('click', () =>{     //console assert button
+      let s1 = 'SE';
+      let s2 = 'coding';
+      console.assert(s1 === s2, 'Software Engineering is not just coding!');
+
+    });
+    errorBtns[5].addEventListener('click', () =>{     //console clear button
+      console.clear();
+    });
+    errorBtns[6].addEventListener('click', () =>{     //console dir button
+      console.dir(errorBtns[6]);
+    });
+    errorBtns[7].addEventListener('click', () =>{     //console dirxml button
+      console.dirxml(errorBtns[7]);
+    });
+    errorBtns[8].addEventListener('click', () =>{     //console group start button
+      const label = 'Console Group';
+      console.group(label);
+    });
+    errorBtns[9].addEventListener('click', () =>{     //console group end button
+      const label = 'Console Group';
+      console.groupEnd(label);
+    });
+    errorBtns[10].addEventListener('click', () =>{     //console table button
+      let json = [{"imgSrc":"https://introweb.tech/assets/images/recipes/1_50-thanksgiving-side-dishes.jpeg","imgAlt":"Mashed potatoes on table","titleLnk":"https://www.loveandlemons.com/thanksgiving-side-dishes/","titleTxt":"50 Thanksgiving Side Dishes: Easy Mashed Potatoes","organization":"Love and Lemons","rating":5,"numRatings":13,"lengthTime":"1 hr 10 min","ingredients":"Roasted garlic, yukon gold, rosemary, butter, olive oil"},{"imgSrc":"https://introweb.tech/assets/images/recipes/2_roasting-turkey-breast-with-stuffing.jpeg","imgAlt":"Turkey breast and stuffing on plate","titleLnk":"https://www.budgetbytes.com/how-to-make-thanksgiving-dinner-for-two/","titleTxt":"Roasted Turkey Breast with Stuffing","organization":"Budget Bytes","rating":5,"numRatings":6,"lengthTime":"1 hr 40 min","ingredients":"Turkey breast, box stuffing mix, dried sage, dried rosemary"},{"imgSrc":"https://introweb.tech/assets/images/recipes/3_moms-cornbread-stuffing.jpeg","imgAlt":"Corebreast stuffing close up","titleLnk":"https://my100yearoldhome.com/thanksgiving-dinner-in-april/","titleTxt":"Mom's Cornbread Stuffing","organization":"My 100 Year Old Home","rating":5,"numRatings":2,"lengthTime":"55 min","ingredients":"Cornbread mix, chicken broth, poultry seasoning, worcestershire sauce, white bread"}];
+      console.table(json);
+    });
+    errorBtns[11].addEventListener('click', () =>{     //start timer button
+      console.time('timer');
+    });
+    errorBtns[12].addEventListener('click', () =>{     //end timer button
+      console.timeEnd('timer');
+    });
+
+    errorBtns[13].addEventListener('click', function handleTraceButtonClick(){ //console trace button
+      const shallow = () => { deep(); };
+      const deep = () => { deeper(); };
+      const deeper = () => { deepest(); };
+      const deepest = () => { console.trace(); };
+      shallow();
+    }); 
+
+    errorBtns[14].addEventListener('click', function globalErrButton() { //global error button
+        boom();
+
+        if (window.onerror) {
+          console.log('Global error: ' + window.onerror);
+        }
+    }); 
+
+
+//try catch portion
+    try {
+      froggyWentAcourting;
+
+
+    } catch (error) {
+      console.error('catch reached in try catch')
+      console.error('Error occurred: ' + error.name);
+      console.error('Error message: ' + error.message);
+
+    } finally {
+      alert('Alerting in finally: Finally reached in try catch.');
+    }
+
+//custom error portion
+    class NamingConventionError extends Error {
+        constructor(message) {
+          super(message); 
+          this.name = "NamingConventionError"; 
+      }
+    }
+    function namingErrorCheck(varNameToCheck){
+      if(varNameToCheck[0] === varNameToCheck[0].toUpperCase()){  //not camel case
+        throw new NamingConventionError('The variable passed in was not in camel case: ' + varNameToCheck);
+      }
+    }
+    try {
+      namingErrorCheck('thisIsOk');   //should be fine
+      namingErrorCheck('ThisIsNotOk');  //should throw error
+
+    } catch (error) {
+      console.error('Custom Error occurred: ' + error.name);
+      console.error('Error message: ' + error.message);
+
+    }
+
   </script>
 </body>
 
