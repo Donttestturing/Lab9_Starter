@@ -205,7 +205,7 @@
     }
     function namingErrorCheck(varNameToCheck){
       if(varNameToCheck[0] === varNameToCheck[0].toUpperCase()){  //not camel case
-        throw new NamingConventionError('The variable passed in was not in camel case: ' + varNameToCheck);
+        throw new NamingConventionError('The variable passed in was not in camel case: \'' + varNameToCheck +'\'');
       }
     }
     try {
