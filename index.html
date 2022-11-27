@@ -87,9 +87,10 @@
     </section>
   </main>
 
-
+  
   <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
   <script>
+    //trackjs portion
     window.TrackJS && TrackJS.install({ 
       token: "527821e83b1340efa3c060a41814d239"
       // for more configuration options, see https://docs.trackjs.com
@@ -105,14 +106,16 @@
       let firstNum = document.querySelector('#first-num').value;
       let secondNum = document.querySelector('#second-num').value;
       let operator = document.querySelector('#operator').value;
-      output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+      //first try catch portion, catch more realistic error
+      try {
+        output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+      } catch (error) {
+        console.error('Error: ' + error.name + ': ' + error.message);
+      }
+      
     });
 
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
-
-
-    //let errorBtnsMyWay = document.querySelectorAll('#error-btns > button');
-
 
 
     // Start your code here
@@ -124,10 +127,9 @@
     errorBtns[1].addEventListener('click', () =>{     //console error button
       console.error("Console Error Demo");
     });
-    let consoleCount = 0;
+
     errorBtns[2].addEventListener('click', () =>{     //console count button
-      consoleCount++;
-      console.log("Count Button: " + consoleCount);
+      console.count('Count Button');
     });
     errorBtns[3].addEventListener('click', () =>{     //console warn button
       console.warn("Console warn button:","Hey! Don't do that!");
@@ -182,11 +184,9 @@
       console.log('Global error occurred, too bad ')
     });
 
-//try catch portion
+//more try catch portion, with finally
     try {
       froggyWentAcourting;
-
-
     } catch (error) {
       console.error('catch reached in try catch')
       console.error('Error occurred: ' + error.name);
