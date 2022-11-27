@@ -110,7 +110,7 @@
       try {
         output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
       } catch (error) {
-        console.error('Error: ' + error.name + ': ' + error.message);
+        console.error('Caught Error: ' + error.name + ': ' + error.message);
       }
       
     });
