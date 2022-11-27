@@ -2,5 +2,5 @@
 
 https://donttestturing.github.io/Lab9_Starter/    
 
-### TrackJS screenshot    
+### TrackJS screenshot:    
 ![JSTrack Reporting Screenshot](screenshots/TrackJS%20reporting.png)
